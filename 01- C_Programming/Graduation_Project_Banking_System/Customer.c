@@ -8,7 +8,7 @@
 extern BankAccount accounts[];
 
 void customer(){
-	printf("%s","Welcome can I have Your Account ID please");
+	printf("Welcome To the customer Window.\n");
 	u8 strikes = 0;
 	bool done = false;
 	while (strikes < 3) {
@@ -21,74 +21,74 @@ void customer(){
 		if (account == NULL) {
 			break;
 		}
-		printf("Welcome Mr.%s", account->full_name);
-		printf("How can I help u today sir");
-		printf("1-You want to make a transaction.");
-		printf("2-YoU want to withdraw cash from the account.");
-		printf("3-You want to deposit money into the account.");
-		printf("4-You want to change the Password for the account.");
-		printf("5-You want to return to the main menu.");
-
-		scanf("%c", &input);
+        _flushall();
+        printf("Welcome Mr.%s\n", account->full_name);
+		printf("How can I help u today sir\n");
+		printf("1-You want to make a transaction.\n");
+		printf("2-YoU want to withdraw cash from the account.\n");
+		printf("3-You want to deposit money into the account.\n");
+		printf("4-You want to change the Password for the account.\n");
+		printf("5-You want to return to the main menu.\n");
+		scanf("%d", &input);
 		while (strikes < 3 && !done) {
 			switch (input) {
 				case 1:
-					printf("Ok sir. I need the destination Bank Account ID");
+					printf("Ok sir. I need the destination Bank Account ID\n");
 					destination = getAccount();
 					if (account == NULL) {
-						printf("Sry sir there is no account with that ID.");
+						printf("Sry sir there is no account with that ID.\n");
 						strikes += 1;
 						break;
 					}
-					printf("Now I need the amount of transaction.");
+					printf("Now I need the amount of transaction.\n");
+                    _flushall();
 					scanf("%lf", &amount);
 					if (amount > account->balance) {
-						printf("Sry sir your account doesn't have enough cash.");
+						printf("Sry sir your account doesn't have enough cash.\n");
 						strikes += 1;
 						break;
 					}
 					if (amount + destination->balance > max_cash) {
-						printf("Sry this account's cash would exceed the allowed limit.");
+						printf("Sry this account's cash would exceed the allowed limit.\n");
 						strikes++;
 						break;
 					}
 					makeTransaction(account, destination, amount);
-					printf("your transaction was successful");
-					printf("Thx for using our Banking system");
+					printf("your transaction was successful\n");
+					printf("Thx for using our Banking system\n");
 					done = true;
 					break;
 				case 2:
-					printf("Ok how much cash would you like to withdraw.");
+					printf("Ok how much cash would you like to withdraw.\n");
 					scanf("%lf", &amount);
 					if (amount > account->balance) {
-						printf("Sry sir your account doesn't have enough cash.");
+						printf("Sry sir your account doesn't have enough cash.\n");
 						strikes++;
 						break;
 					}
 					getCash(account, amount);
-					printf("your transaction was successful");
-					printf("Thx for using our Banking system");
+					printf("your transaction was successful\n");
+					printf("Thx for using our Banking system\n");
 					done = true;
 					break;
 				case 3:
-					printf("Ok how much cash would you like to deposit.");
+					printf("Ok how much cash would you like to deposit.\n");
 					scanf("%lf", &amount);
 					if (amount + account->balance > max_cash) {
-						printf("Sry sir your account can't have that much cash.");
-						printf("You can only deposit %lf",
-							   max_cash - account->balance);
+						printf("Sry sir your account can't have that much cash.\n");
+						printf("You can only deposit %lf\n", max_cash - account->balance);
 						strikes += 1;
 						break;
 					}
 					deposit(account, amount);
-					printf("Your transaction was successful");
-					printf("Thx for using our Banking system");
+					printf("Your transaction was successful\n");
+					printf("Thx for using our Banking system\n");
 					done = true;
 					break;
 				case 4:
-					printf("Ok sir can you please enter the old password.");
+					printf("Ok sir can you please enter the old password.\n");
 					scanf("%llu", &old_password);
-					printf("Ok sir can you please enter the new password.");
+					printf("Ok sir can you please enter the new password.\n");
 					scanf("%llu", &new_password);
 					if (changeAccountPassword(account, old_password,
 											  new_password)) {
@@ -98,10 +98,10 @@ void customer(){
 					}
 					break;
 				case 5:
-					printf("hope to see u soon.");
+					printf("hope to see u soon.\n");
 					return;
 				default:
-					printf("Wrong input. Please try again.");
+					printf("Wrong input. Please try again.\n");
 					break;
 			}
 		}
@@ -122,4 +122,12 @@ u8 changeAccountPassword(BankAccount *account, u64 old_pass, u64 new_pass){
 		return 0;
 	}
 
+}
+f64  getCash(BankAccount *account, f64 amount){
+    account->balance -= amount;
+}
+void  deposit(BankAccount *account, f64 amount) {
+    if ((0xFFFFFFFF - account->balance) > amount) {
+        account->balance += amount;
+    }
 }

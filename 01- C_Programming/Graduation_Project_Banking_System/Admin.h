@@ -6,9 +6,9 @@
 #define BANKING_SYSTEM_GRADUATION_ADMIN_H
 #include "BankAccount.h"
 
-u64 admin_password = 123467890;
-u8 admin_username[25] = "Ahmed_Sayed";
 
+
+void admin();
 void createBankAccount();
 void openExistingAccount();
 void changeAccountStatus();

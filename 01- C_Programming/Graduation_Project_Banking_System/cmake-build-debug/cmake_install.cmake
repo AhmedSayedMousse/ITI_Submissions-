@@ -1,4 +1,4 @@
-# Install script for directory: F:/ITI_Material/03- C_&_AVR/Assignments/Banking_System_graduation
+# Install script for directory: F:/ITI_Material/ITI_Submissions-/01- C_Programming/Graduation_Project_Banking_System
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "F:/ITI_Material/03- C_&_AVR/Assignments/Banking_System_graduation/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "F:/ITI_Material/ITI_Submissions-/01- C_Programming/Graduation_Project_Banking_System/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

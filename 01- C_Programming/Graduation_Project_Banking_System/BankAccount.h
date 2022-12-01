@@ -5,7 +5,7 @@
 #ifndef BANKING_SYSTEM_GRADUATION_BANKACCOUNT_H
 #define BANKING_SYSTEM_GRADUATION_BANKACCOUNT_H
 
-#include "../STD_Libs/STD_Types.h"
+#include "./STD_Libs/STD_Types.h"
 
 #define Active 1
 #define Restricted 2

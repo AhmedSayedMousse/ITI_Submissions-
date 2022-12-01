@@ -1,5 +1,5 @@
 //
-// Created by a7m3d on 11/24/2022.
+// Created by Ahmed Sayed Mousse on 11/24/2022.
 //
 
 #include <stdio.h>
@@ -24,9 +24,15 @@ void createAccount(u8 name[], u8 address[], u8 age, u8 id[], f64 balance,
 	new_account.password = generatePassword();
 	new_account.account_status = Active;
 	if (guard_id != 0){
-		setGuardian(guard_id, guard_name);
+		setGuardian(&new_account,guard_id, guard_name);
 	}
 	accounts[accounts_created++] = new_account;
+    printf("Account was created successfully\n");
+    printf("Your New Account ID is:");
+    for (int i=0 ; i<10; i++){
+        printf("%d", new_account.bankAccountID[i]);
+    }
+    printf("\n");
 }
 void setGuardian(BankAccount *account,u8 guard_id[], u8 guard_name[]){
 	strcpy((char *) account->guardianID,
@@ -50,12 +56,17 @@ void changePassword(BankAccount *account, u64 new_password){
 
 BankAccount *getAccount(){
 	BankAccount *account = accounts;
-	while(1){
+    while(1){
 		u8 accountID[10];
 		u8 strikes=0;
-		scanf("%s", accountID);
-		while(account->bankAccountID != accountID && account != NULL){
+        printf("Can I have Your Account ID please\n");
+        scanf("%s", accountID);
+        for (int i=0; i<10; i++){
+            accountID[i] = accountID[i]-48;
+        }
+		while(strcmp((char *) account->bankAccountID, (char *) accountID ) != 0 && account != NULL){
 			account+=1;
+            printf("not this one");
 		}
 		if (account == NULL){
 			printf("Sry we don't have an account with this ID");
@@ -65,9 +76,10 @@ BankAccount *getAccount(){
 				printf("You reached your maximum trials.");
 				break;
 			}
-		}
+		}else {
+            return account;
+        }
 	}
-	return account;
 }
 u64 generatePassword(){
 	u64 n = rand(); // the rand function generates only 4 bytes so

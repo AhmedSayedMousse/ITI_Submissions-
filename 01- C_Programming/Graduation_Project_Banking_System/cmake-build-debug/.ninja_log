@@ -1,0 +1,6 @@
+# ninja log v5
+2	364	6915551169077873	build.ninja	a9a5ad04c411eafc
+18	285	6909997497074688	CMakeFiles/Banking_System_graduation.dir/main.c.obj	7a05913b456494ae
+117	287	6909874181592913	Banking_System_graduation.exe	8557e1ce775bc9b9
+11	187	6909997496465061	CMakeFiles/Banking_System_graduation.dir/Admin.c.obj	b90fdbd869ddcf88
+4	338	6909997497954142	CMakeFiles/Banking_System_graduation.dir/BankAccount.c.obj	d3768fa7c3cbd5f0

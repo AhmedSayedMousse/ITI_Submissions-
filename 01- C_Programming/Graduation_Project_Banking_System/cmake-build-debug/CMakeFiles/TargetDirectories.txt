@@ -1,0 +1,3 @@
+F:/ITI_Material/03- C_&_AVR/Assignments/Banking_System_graduation/cmake-build-debug/CMakeFiles/Banking_System_graduation.dir
+F:/ITI_Material/03- C_&_AVR/Assignments/Banking_System_graduation/cmake-build-debug/CMakeFiles/edit_cache.dir
+F:/ITI_Material/03- C_&_AVR/Assignments/Banking_System_graduation/cmake-build-debug/CMakeFiles/rebuild_cache.dir

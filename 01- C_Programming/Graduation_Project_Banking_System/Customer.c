@@ -11,16 +11,15 @@ void customer(){
 	printf("Welcome To the customer Window.\n");
 	u8 strikes = 0;
 	bool done = false;
-	while (strikes < 3) {
+    BankAccount  *account = getAccount();
+    while (strikes < 3) {
 		u8 input;
-		BankAccount *account;
 		BankAccount *destination;
 		u64 old_password, new_password;
 		f64 amount;
-		account = getAccount();
-		if (account == NULL) {
-			break;
-		}
+        if (account == NULL) {
+            break;
+        }
         _flushall();
         printf("Welcome Mr.%s\n", account->full_name);
 		printf("How can I help u today sir\n");

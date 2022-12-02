@@ -34,4 +34,5 @@ void changePassword(BankAccount *account, u64 new_password);
 BankAccount *getAccount();
 u64 generatePassword();
 void generateID(u8 id[]);
+void create_ten_accounts();
 #endif //BANKING_SYSTEM_GRADUATION_BANKACCOUNT_H

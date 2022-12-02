@@ -5,6 +5,7 @@
 #include "Admin.h"
 #include "Customer.h"
 int main() {
+    create_ten_accounts(); // creates 10 random test accounts .
     int input_1;
     srand( time(NULL));
     printf("-------WelcomeToTheBank-------\n");

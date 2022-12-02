@@ -28,10 +28,13 @@ void createAccount(u8 name[], u8 address[], u8 age, u8 id[], f64 balance,
 	}
 	accounts[accounts_created++] = new_account;
     printf("Account was created successfully\n");
-    printf("Your New Account ID is:");
+    printf("Your New Account ID is: ");
     for (int i=0 ; i<10; i++){
         printf("%d", new_account.bankAccountID[i]);
     }
+    printf("\nYour New Account Password is: ");
+    printf("%llu", new_account.password);
+
     printf("\n");
 }
 void setGuardian(BankAccount *account,u8 guard_id[], u8 guard_name[]){
@@ -52,8 +55,21 @@ void changeStatus(BankAccount *account, u8 new_status){
 }
 void changePassword(BankAccount *account, u64 new_password){
 	account->password = new_password;
+    printf("Password Changed Successfully\n");
 }
-
+void create_ten_accounts(){
+    u8  full_name[50] = "AhmedSayedMousse";
+    u8  full_address[100] = "LolLolLOlLO";
+    u8  nationalID[14]= "12345678912345";
+    u8  age = 25;
+    u8  guardian_name[50] = {0};
+    u8  guardianID[14]= {0};
+    f64 balance = 5000;
+    for(int i=0; i<10; i++){
+        createAccount(full_name, full_address, age, nationalID, balance,
+                      guardianID, guardian_name);
+    }
+}
 BankAccount *getAccount(){
 	BankAccount *account = accounts;
     while(1){
@@ -66,7 +82,6 @@ BankAccount *getAccount(){
         }
 		while(strcmp((char *) account->bankAccountID, (char *) accountID ) != 0 && account != NULL){
 			account+=1;
-            printf("not this one");
 		}
 		if (account == NULL){
 			printf("Sry we don't have an account with this ID");
@@ -84,7 +99,7 @@ BankAccount *getAccount(){
 u64 generatePassword(){
 	u64 n = rand(); // the rand function generates only 4 bytes so
 	n = (n<<32) | rand(); // I used it twice to generate an 8 byte random num.
-	return n;
+    return n;
 }
 
 void  generateID(u8 id[]){

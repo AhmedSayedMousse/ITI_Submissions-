@@ -11,9 +11,8 @@
 u64 admin_password = 1234567890;
 u8 admin_username[25] = "Ahmed_Sayed";
 void admin(){
-	printf("Welcome, can I have the Username and Password please.\n");
-
-	u64 password;
+    printf("Welcome, can I have the Username and Password please.\n");
+    u64 password;
 	u8 username[25];
     printf("The UserName:");
     scanf("%s", username);
@@ -53,6 +52,7 @@ void admin(){
 		}
 	}
 }
+
 
 void createBankAccount(){
 	u8  full_name[50];
